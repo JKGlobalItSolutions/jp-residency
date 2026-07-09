@@ -28,11 +28,8 @@ const HeroSlider = () => {
     return () => clearInterval(intervalRef.current);
   }, [slides.length]);
 
-  const bookingUrl =
-    "https://wa.me/919688866684?text=Hello%20JP%20Residency,%20I%20would%20like%20to%20enquire%20about%20room%20availability%20and%20booking.";
-
   const openBooking = () => {
-    window.open(bookingUrl, "_blank", "noopener,noreferrer");
+    window.open("https://bookingengine.stayflexi.com/?hotel_id=39026", "_blank", "noopener,noreferrer");
   };
 
   const scrollToGallery = () => {

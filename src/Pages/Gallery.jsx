@@ -12,6 +12,8 @@ import gallery15 from "../assets/gallery/gellary_img15.png";
 import gallery16 from "../assets/gallery/gellary_img16.png";
 import gallery17 from "../assets/gallery/gellary_img17.png";
 import gallery18 from "../assets/gallery/gellary_img18.png";
+import gallery19 from "../assets/gallery/gellary_img19.png";
+import gallery20 from "../assets/gallery/gellary_img20.png";
 
 export const galleryImages = [
   { src: gallery9, size: "gallery-h-xl" },
@@ -23,6 +25,9 @@ export const galleryImages = [
   { src: gallery15, size: "gallery-h-md" },
   { src: gallery16, size: "gallery-h-lg" },
   { src: gallery17, size: "gallery-h-sm" },
+  { src: gallery18, size: "gallery-h-md" },
+  { src: gallery19, size: "gallery-h-md" },
+  { src: gallery20, size: "gallery-h-md" },
 ];
 
 const Gallery = () => {

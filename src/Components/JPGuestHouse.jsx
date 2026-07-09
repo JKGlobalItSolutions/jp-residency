@@ -4,7 +4,7 @@ import livingSpaceImg from "../assets/guest/img2.png";
 import exteriorImg from "../assets/guest/img3.png";
 
 const bookingUrl =
-  "https://wa.me/919688866684?text=Hello%20JP%20Residency,%20I%20would%20like%20to%20enquire%20about%20room%20availability%20and%20booking.";
+  "https://bookingengine.stayflexi.com/?hotel_id=39026";
 
 const features = [
   { icon: "bi-arrows-fullscreen", label: "Spacious Rooms" },

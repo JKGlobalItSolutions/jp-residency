@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+ import { useEffect, useRef, useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { pournamiCalendarData } from "../db/data";
 
@@ -66,6 +66,10 @@ const PournamiCalendar = () => {
     return () => clearInterval(interval);
   }, [pournamiData]);
 
+  const openBooking = () => {
+    window.open("https://bookingengine.stayflexi.com/?hotel_id=39026", "_blank", "noopener,noreferrer");
+  };
+
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -116,7 +120,7 @@ const PournamiCalendar = () => {
                       <div className="pournami-card-kicker dark">Booking Countdown</div>
                       <h3><span aria-hidden="true">&#x23F3;</span> Next Pournami</h3>
                     </div>
-                    <button className="pournami-cta light" onClick={scrollToContact}>Reserve Your Stay</button>
+                    <button className="pournami-cta light" onClick={openBooking}>Reserve Your Stay</button>
                   </div>
 
                   <div className="pournami-countdown-grid">
@@ -144,7 +148,7 @@ const PournamiCalendar = () => {
                     <span style={{ width: "85%" }} />
                   </div>
                   <strong>Only {bookingUrgency.roomsLeft} Rooms Remaining</strong>
-                  <button className="pournami-cta dark" onClick={scrollToRooms}>Book Now</button>
+                  <button className="pournami-cta dark" onClick={openBooking}>Book Now</button>
                 </div>
               </div>
 
@@ -173,7 +177,7 @@ const PournamiCalendar = () => {
             <strong><span aria-hidden="true">&#x1F525;</span> Pournami Special Booking</strong>
             <span>Only {bookingUrgency.roomsLeft} Rooms Left</span>
           </div>
-          <button onClick={scrollToContact}>Reserve Now</button>
+          <button onClick={openBooking}>Reserve Now</button>
         </div>
       )}
     </section>

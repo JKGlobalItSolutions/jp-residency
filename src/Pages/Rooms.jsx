@@ -202,7 +202,7 @@ const Rooms = () => {
   };
 
   const handleBookNow = (roomId) => {
-    // Booking functionality removed
+    window.open("https://bookingengine.stayflexi.com/?hotel_id=39026", "_blank", "noopener,noreferrer");
   };
 
   const handleMakePayment = async () => {

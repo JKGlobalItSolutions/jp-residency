@@ -38,6 +38,7 @@ const Amenities = () => {
     { name: "Wheelchair Accessibility", icon: "bi-person-wheelchair", desc: "Wheelchair-friendly access for elderly and differently-abled guests." },
     { name: "Structured Parking", icon: "bi-p-square", desc: "Safe and organized parking facility within the premises." },
     { name: "24x7 Hospital Facility Nearby", icon: "bi-hospital", desc: "Round-the-clock medical assistance and hospital access available nearby." },
+    { name: "Pantry", icon: "bi-house-gear", desc: "Well-equipped pantry with essential facilities for preparing tea, coffee, and light refreshments during your stay." },
   ];
 
   return (

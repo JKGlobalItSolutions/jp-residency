@@ -88,7 +88,7 @@ const RoomCard = ({
     }
   };
 
-  const isBookable = !isUnavailable && !isSoldOut && onBookNow;
+  const isBookable = !isUnavailable && !isSoldOut;
 
   return (
     <div
@@ -180,7 +180,7 @@ const RoomCard = ({
                 fontWeight: "600",
                 padding: "8px 20px",
               }}
-              onClick={() => isBookable && onBookNow(id)}
+              onClick={() => isBookable && window.open("https://bookingengine.stayflexi.com/?hotel_id=39026", "_blank", "noopener,noreferrer")}
               disabled={!isBookable}
             >
               {isSoldOut ? 'Sold Out' : isUnavailable ? 'Check Availability' : 'Book Now'}
