@@ -4,6 +4,10 @@ import kovilImg from "../assets/nearby/kovil.png";
 import ramanaImg from "../assets/nearby/ramana.png";
 import caveImg from "../assets/nearby/cave.png";
 import ashramImg from "../assets/nearby/ashram.png";
+import girivalamImg from "../assets/nearby/girivalam.png";
+import panchaImg from "../assets/nearby/pancha.png";
+import railwayImg from "../assets/nearby/railway.png";
+import idukuImg from "../assets/nearby/iduku.png";
 
 const NearbyAttractions = () => {
   const sectionRef = useRef(null);
@@ -53,6 +57,30 @@ const NearbyAttractions = () => {
       image: ashramImg,
       distance: "4 km",
       desc: "A beautiful cave ashram located on the slopes of Arunachala hill, offering stunning views and peaceful meditation spaces.",
+    },
+    {
+      name: "Girivalam Path",
+      image: girivalamImg,
+      distance: "Approx. 2 km",
+      desc: "Experience the sacred 14 km Girivalam Path around Arunachala Hill, a revered pilgrimage route visited by thousands of devotees, especially during Pournami (Full Moon).",
+    },
+    {
+      name: "Pachamugha Dharisanam",
+      image: panchaImg,
+      distance: "Approx. 3 km",
+      desc: "A popular viewpoint where devotees can witness the divine five-faced view of Arunachala Hill during Girivalam.",
+    },
+    {
+      name: "Tiruvannamalai Railway Station",
+      image: railwayImg,
+      distance: "Approx. 2.5 km",
+      desc: "The main railway station providing convenient connectivity to major cities and nearby destinations.",
+    },
+    {
+      name: "Idukku Pillaiyar Temple",
+      image: idukuImg,
+      distance: "Approx. 2 km",
+      desc: "A famous Lord Ganesesha temple where devotees pass through the narrow sacred passage as part of their spiritual visit.",
     },
   ];
 

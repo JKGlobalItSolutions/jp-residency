@@ -14,6 +14,13 @@ import gallery17 from "../assets/gallery/gellary_img17.png";
 import gallery18 from "../assets/gallery/gellary_img18.png";
 import gallery19 from "../assets/gallery/gellary_img19.png";
 import gallery20 from "../assets/gallery/gellary_img20.png";
+import gallery21 from "../assets/gallery/gellary_img21.png";
+import gallery22 from "../assets/gallery/gellary_img22.png";
+import gallery23 from "../assets/gallery/gellary_img23.png";
+import gallery24 from "../assets/gallery/gellary_img24.png";
+import gallery25 from "../assets/gallery/gellary_img25.png";
+import gallery26 from "../assets/gallery/gellary_img26.png";
+import gallery27 from "../assets/gallery/gellary_img27.png";
 
 export const galleryImages = [
   { src: gallery9, size: "gallery-h-xl" },
@@ -28,6 +35,13 @@ export const galleryImages = [
   { src: gallery18, size: "gallery-h-md" },
   { src: gallery19, size: "gallery-h-md" },
   { src: gallery20, size: "gallery-h-md" },
+  { src: gallery21, size: "gallery-h-md" },
+  { src: gallery22, size: "gallery-h-md" },
+  { src: gallery23, size: "gallery-h-md" },
+  { src: gallery24, size: "gallery-h-md" },
+  { src: gallery25, size: "gallery-h-md" },
+  { src: gallery26, size: "gallery-h-md" },
+  { src: gallery27, size: "gallery-h-md" },
 ];
 
 const Gallery = () => {
