@@ -26,16 +26,17 @@ const WhyChooseUs = () => {
   }, []);
 
   const reasons = [
+    { icon: "bi-moon-stars-fill", title: "Pancha Mukha Darisanam View", desc: "Experience the divine Pancha Mukha Darisanam view directly from the property." },
+    { icon: "bi-flower2", title: "Meditation Area", desc: "Experience peace and spiritual tranquility in our dedicated meditation space, designed for relaxation, mindfulness, prayer, and inner well-being." },
+    { icon: "bi-stars", title: "Party Hall", desc: "Spacious and well-maintained party hall suitable for family gatherings, celebrations, small functions, and special occasions." },
+    { icon: "bi-house-gear", title: "Pantry", desc: "Well-equipped pantry with essential facilities for preparing tea, coffee, and light refreshments during your stay." },
+    { icon: "bi-house-door-fill", title: "Guest House", desc: "Comfortable and affordable guest house facilities with a divine atmosphere, perfect for families, pilgrims, and travelers visiting Tiruvannamalai." },
     { icon: "bi-geo-alt-fill", title: "Prime Location", desc: "Situated in the heart of Tiruvannamalai, close to major attractions and temples." },
     { icon: "bi-house-heart-fill", title: "Comfortable Rooms", desc: "Well-appointed rooms designed for maximum comfort and relaxation." },
     { icon: "bi-people-fill", title: "Family Friendly", desc: "Warm hospitality and spacious accommodations perfect for families." },
     { icon: "bi-cash-stack", title: "Affordable Pricing", desc: "Premium quality stays at budget-friendly prices with great value." },
     { icon: "bi-shield-fill-check", title: "Secure Parking", desc: "Ample secure parking space monitored 24/7 for your vehicle safety." },
     { icon: "bi-headset", title: "24/7 Guest Support", desc: "Round-the-clock dedicated support team ready to assist you anytime." },
-    { icon: "bi-flower2", title: "Meditation Area", desc: "Experience peace and spiritual tranquility in our dedicated meditation space, designed for relaxation, mindfulness, prayer, and inner well-being." },
-    { icon: "bi-stars", title: "Party Hall", desc: "Spacious and well-maintained party hall suitable for family gatherings, celebrations, small functions, and special occasions." },
-    { icon: "bi-house-door-fill", title: "Guest House", desc: "Comfortable and affordable guest house facilities with a divine atmosphere, perfect for families, pilgrims, and travelers visiting Tiruvannamalai." },
-    { icon: "bi-moon-stars-fill", title: "Pancha Mukha Darisanam View", desc: "Experience the divine Pancha Mukha Darisanam view directly from the property." },
     { icon: "bi-flower1", title: "Peaceful Meditation Environment", desc: "Dedicated calm and spiritual atmosphere ideal for meditation and relaxation." },
     { icon: "bi-person-heart", title: "Pilgrim-Friendly Stay", desc: "Comfortable accommodation designed for devotees and spiritual travelers." },
     { icon: "bi-signpost-split-fill", title: "Prime Location Near Temple Attractions", desc: "Easy access to important spiritual and sightseeing destinations." },

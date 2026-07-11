@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import deluxeDoubleImg from "../assets/deluxe double room/img1.png";
-import deluxeTripleImg from "../assets/deluxe triple room/img1.png";
-import deluxeRoomImg from "../assets/deluxe room/img1.png";
+import deluxeDoubleImg1 from "../assets/deluxe double room/img1.png";
+import deluxeDoubleImg2 from "../assets/deluxe double room/img2.png";
+import deluxeDoubleImg3 from "../assets/deluxe double room/img3.png";
+import deluxeTripleImg1 from "../assets/deluxe triple room/img1.png";
+import deluxeTripleImg2 from "../assets/deluxe triple room/img2.png";
+import deluxeRoomImg1 from "../assets/deluxe room/img1.png";
+import deluxeRoomImg2 from "../assets/deluxe room/img2.png";
+import deluxeRoomImg3 from "../assets/deluxe room/img3.png";
+import spdImg1 from "../assets/spd/img1.png";
+import spdImg2 from "../assets/spd/img2.png";
+import spdImg3 from "../assets/spd/img3.png";
+import spd1Img1 from "../assets/spd1/WhatsApp Image 2026-07-09 at 10.29.11 AM.png";
+import spd1Img2 from "../assets/spd1/WhatsApp Image 2026-07-09 at 10.29.18 AM.png";
+import spd1Img3 from "../assets/spd1/WhatsApp Image 2026-07-10 at 5.57.33 PM.png";
 
 const bookingUrl =
   "https://bookingengine.stayflexi.com/?hotel_id=39026";
@@ -33,11 +44,11 @@ const Rooms = () => {
 
   const rooms = [
     {
-      name: "Deluxe Double Room",
+      name: "Deluxe Double Room With Panchamuga Dharsham",
       price: "₹8,000",
       guests: "Up to 2 guests",
       beds: "Queen bed",
-      images: [deluxeDoubleImg],
+      images: [deluxeDoubleImg1, deluxeDoubleImg2, deluxeDoubleImg3],
       description:
         "Comfortable and well-appointed room featuring modern amenities and city views. Perfect for business travelers and couples seeking quality accommodation at great value.",
       amenities: ["Free WiFi", "Smart TV", "Air Conditioning", "Safe", "Room Service", "Electric Kettle"],
@@ -49,7 +60,7 @@ const Rooms = () => {
       price: "₹6,000",
       beds: "King bed",
       guests: "Up to 2 Adults & 2 Child",
-      images: [deluxeTripleImg],
+      images: [deluxeTripleImg1, deluxeTripleImg2],
       description:
         "Elegant premium room with enhanced furnishings and modern amenities. Features plush bedding and a relaxing atmosphere.",
       amenities: ["Free WiFi", "Smart TV", "Air Conditioning", "Safe", "Room Service", "Complimentary Breakfast"],
@@ -61,12 +72,36 @@ const Rooms = () => {
       price: "₹4,000",
       guests: "Up to 4 guests",
       beds: "2 Queen beds",
-      images: [deluxeRoomImg],
+      images: [deluxeRoomImg1, deluxeRoomImg2, deluxeRoomImg3],
       description:
         "Spacious family room designed for comfort and convenience. Ideal for families or small groups.",
       amenities: ["Free WiFi", "Smart TV", "Air Conditioning", "Safe", "Room Service", "Work Desk"],
       badge: "Family Favorite",
       icon: "bi-people",
+    },
+    {
+      name: "Suite Room With Panchamuga Dharsham",
+      price: "₹8,000",
+      guests: "Up to 2 guests",
+      beds: "Queen bed",
+      images: [spdImg1, spdImg2, spdImg3],
+      description:
+        "Premium suite offering a divine Panchamuga Dharshan view. Experience spiritual tranquility combined with luxurious comfort in this elegantly designed room.",
+      amenities: ["Free WiFi", "Smart TV", "Air Conditioning", "Safe", "Room Service", "Electric Kettle"],
+      badge: "Premium Suite",
+      icon: "bi-moon-stars-fill",
+    },
+    {
+      name: "Suite Room With Panchamuga Dharsham 1",
+      price: "₹8,000",
+      guests: "Up to 2 guests",
+      beds: "Queen bed",
+      images: [spd1Img1, spd1Img2, spd1Img3],
+      description:
+        "Another premium suite showcasing the breathtaking Panchamuga Dharshan view. Thoughtfully designed for guests seeking a serene and spiritually uplifting stay.",
+      amenities: ["Free WiFi", "Smart TV", "Air Conditioning", "Safe", "Room Service", "Electric Kettle"],
+      badge: "Premium Suite",
+      icon: "bi-stars",
     },
   ];
 
@@ -93,6 +128,101 @@ const Rooms = () => {
     if (!selectedRoom) return;
     setCurrentIndex((prev) =>
       prev === 0 ? selectedRoom.images.length - 1 : prev - 1
+    );
+  };
+
+  // Image Carousel component for room cards with multiple images
+  const ImageCarousel = ({ images, roomName }) => {
+    const [slideIndex, setSlideIndex] = useState(0);
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setSlideIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      }, 4000);
+      return () => clearInterval(timer);
+    }, [images.length]);
+
+    const goToSlide = (i) => setSlideIndex(i);
+    const prevSlide = () => setSlideIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    const nextSlide = () => setSlideIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+
+    return (
+      <div className="position-relative w-100 h-100" style={{ minHeight: "280px", overflow: "hidden" }}>
+        {images.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={`${roomName} ${i + 1}`}
+            loading="lazy"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: i === slideIndex ? 1 : 0,
+              transition: "opacity 0.8s ease-in-out",
+            }}
+          />
+        ))}
+        <div className="room-overlay" />
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="btn btn-light position-absolute top-50 start-0 translate-middle-y rounded-circle shadow d-flex align-items-center justify-content-center"
+          style={{
+            width: "36px",
+            height: "36px",
+            border: "none",
+            fontSize: "22px",
+            zIndex: 5,
+            marginLeft: "10px",
+            opacity: 0.85,
+          }}
+          aria-label="Previous image"
+        >
+          ‹
+        </button>
+        <button
+          onClick={nextSlide}
+          className="btn btn-light position-absolute top-50 end-0 translate-middle-y rounded-circle shadow d-flex align-items-center justify-content-center"
+          style={{
+            width: "36px",
+            height: "36px",
+            border: "none",
+            fontSize: "22px",
+            zIndex: 5,
+            marginRight: "10px",
+            opacity: 0.85,
+          }}
+          aria-label="Next image"
+        >
+          ›
+        </button>
+
+        {/* Pagination Dots */}
+        <div
+          className="position-absolute d-flex gap-2"
+          style={{ bottom: "15px", left: "50%", transform: "translateX(-50%)", zIndex: 5 }}
+        >
+          {images.map((_, i) => (
+            <span
+              key={i}
+              onClick={() => goToSlide(i)}
+              style={{
+                width: i === slideIndex ? "22px" : "8px",
+                height: "8px",
+                borderRadius: "4px",
+                background: i === slideIndex ? "#A37D4C" : "rgba(255,255,255,0.6)",
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+              }}
+            />
+          ))}
+        </div>
+      </div>
     );
   };
 
@@ -174,16 +304,22 @@ const Rooms = () => {
                   </div>
                 </div>
 
-                {/* Right Side: Image - on mobile this comes second (order-2) below content */}
+                {/* Right Side: Image Carousel - on mobile this comes second (order-2) below content */}
                 <div className="col-lg-6 order-2 order-lg-2 px-0">
-                  <div className="room-image-wrapper" style={{ height: "100%", minHeight: "280px" }}>
-                    <img
-                      src={room.images[0]}
-                      alt={room.name}
-                      loading="lazy"
-                      style={{ width: "100%", height: "100%", objectFit: "cover", minHeight: "280px" }}
-                    />
-                    <div className="room-overlay" />
+                  <div className="room-image-wrapper position-relative" style={{ height: "100%", minHeight: "280px" }}>
+                    {room.images.length > 1 ? (
+                      <ImageCarousel images={room.images} roomName={room.name} />
+                    ) : (
+                      <>
+                        <img
+                          src={room.images[0]}
+                          alt={room.name}
+                          loading="lazy"
+                          style={{ width: "100%", height: "100%", objectFit: "cover", minHeight: "280px" }}
+                        />
+                        <div className="room-overlay" />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

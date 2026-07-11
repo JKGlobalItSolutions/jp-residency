@@ -17,6 +17,8 @@ import PournamiCalendar from "./Components/PournamiCalendar"
 import HowToReachUs from "./Components/HowToReachUs"
 import WhyChooseUs from "./Components/WhyChooseUs"
 import NearbyAttractions from "./Components/NearbyAttractions"
+import Pantry from "./Pages/Pantry"
+import ToursTravels from "./Pages/ToursTravels"
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             </>
           }
         />
+        <Route path="/pantry" element={<Pantry />} />
+        <Route path="/tours-travels" element={<ToursTravels />} />
       </Routes>
       <Footer />
       <FloatingActions />

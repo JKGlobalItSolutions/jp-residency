@@ -68,8 +68,10 @@ const Navbar = () => {
     { label: "Home", id: "hero" },
     { label: "About Us", id: "about" },
     { label: "Rooms", id: "room" },
-    { label: "JP Guest House", id: "guest-house" },
-    { label: "Amenities", id: "amenities" },
+  { label: "JP Guest House", id: "guest-house" },
+  { label: "Pantry", id: "pantry", route: "/pantry" },
+  { label: "Tours & Travels", id: "tours-travels", route: "/tours-travels" },
+  { label: "Amenities", id: "amenities" },
     { label: "Gallery", id: "gallery" },
     { label: "Contact Us", id: "contact" },
   ];
@@ -127,6 +129,16 @@ const Navbar = () => {
                   >
                     {item.label}
                   </a>
+                ) : item.route ? (
+                  <Link
+                    to={item.route}
+                    className="nav-link"
+                    style={navItemStyle}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {item.label}
+                  </Link>
                 ) : (
                   <span
                     onClick={() => scrollToSection(item.id)}

@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import aboutImg from "../assets/about/img.png";
+import aboutImg1 from "../assets/about/img.png";
+import aboutImg2 from "../assets/about/img1.png";
+import aboutImg3 from "../assets/about/img4.png";
 
 const AboutUs = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const aboutImages = [aboutImg1, aboutImg2, aboutImg3];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,6 +24,16 @@ const AboutUs = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === aboutImages.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [aboutImages.length]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev === aboutImages.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? aboutImages.length - 1 : prev - 1));
 
   return (
     <section
@@ -85,7 +99,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          {/* Right: Image */}
+          {/* Right: Image Carousel */}
           <div className="col-lg-6">
             <div
               className="position-relative"
@@ -96,37 +110,101 @@ const AboutUs = () => {
                 transition: "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
             >
-              <img
-                src={aboutImg}
-                alt="JP Residency"
-                className="img-fluid w-100"
-                style={{
-                  height: "400px",
-                  objectFit: "cover",
-                  display: "block",
-                  transition: "transform 0.6s ease",
-                }}
-                loading="lazy"
-              />
-              <div
-                className="position-absolute bottom-0 start-0 end-0 p-4"
-                style={{
-                  background:
-                    "linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%)",
-                }}
-              >
-                <span
-                  className="badge"
+              <div className="position-relative" style={{ height: "400px", overflow: "hidden" }}>
+                {aboutImages.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt={`JP Residency ${i + 1}`}
+                    className="img-fluid w-100"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      height: "400px",
+                      objectFit: "cover",
+                      opacity: i === currentSlide ? 1 : 0,
+                      transition: "opacity 0.8s ease-in-out",
+                    }}
+                    loading="lazy"
+                  />
+                ))}
+                <div
+                  className="position-absolute bottom-0 start-0 end-0 p-4"
                   style={{
-                    background: "#A37D4C",
-                    padding: "8px 18px",
-                    borderRadius: "50px",
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
+                    background:
+                      "linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%)",
+                    zIndex: 5,
                   }}
                 >
-                  <i className="bi bi-star-fill me-1"></i> Experience Comfort & Luxury
-                </span>
+                  <span
+                    className="badge"
+                    style={{
+                      background: "#A37D4C",
+                      padding: "8px 18px",
+                      borderRadius: "50px",
+                      fontSize: "0.85rem",
+                      fontWeight: 600,
+                    }}
+                  >
+                    <i className="bi bi-star-fill me-1"></i> Experience Comfort & Luxury
+                  </span>
+                </div>
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="btn btn-light position-absolute top-50 start-0 translate-middle-y rounded-circle shadow d-flex align-items-center justify-content-center"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    border: "none",
+                    fontSize: "22px",
+                    zIndex: 5,
+                    marginLeft: "10px",
+                    opacity: 0.85,
+                  }}
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="btn btn-light position-absolute top-50 end-0 translate-middle-y rounded-circle shadow d-flex align-items-center justify-content-center"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    border: "none",
+                    fontSize: "22px",
+                    zIndex: 5,
+                    marginRight: "10px",
+                    opacity: 0.85,
+                  }}
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+
+                {/* Pagination Dots */}
+                <div
+                  className="position-absolute d-flex gap-2"
+                  style={{ bottom: "15px", left: "50%", transform: "translateX(-50%)", zIndex: 5 }}
+                >
+                  {aboutImages.map((_, i) => (
+                    <span
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      style={{
+                        width: i === currentSlide ? "22px" : "8px",
+                        height: "8px",
+                        borderRadius: "4px",
+                        background: i === currentSlide ? "#A37D4C" : "rgba(255,255,255,0.6)",
+                        transition: "all 0.3s ease",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
