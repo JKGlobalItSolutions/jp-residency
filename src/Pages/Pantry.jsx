@@ -1,19 +1,12 @@
+import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import pantryImg1 from "../assets/pantry/img1.png";
-import pantryImg2 from "../assets/pantry/img2.png";
-import pantryImg3 from "../assets/pantry/img3.png";
-import pantryImg4 from "../assets/pantry/img4.png";
-import pantryImg5 from "../assets/pantry/img5.png";
+import pantryImg1 from "../assets/pan/img1.png";
 
 const bookingUrl =
   "https://bookingengine.stayflexi.com/?hotel_id=39026";
 
 const pantryImages = [
-  { src: pantryImg1, alt: "Pantry image 1" },
-  { src: pantryImg2, alt: "Pantry image 2" },
-  { src: pantryImg3, alt: "Pantry image 3" },
-  { src: pantryImg4, alt: "Pantry image 4" },
-  { src: pantryImg5, alt: "Pantry image 5" },
+  { src: pantryImg1, alt: "Pantry image" },
 ];
 
 const amenities = [
@@ -21,108 +14,29 @@ const amenities = [
   { icon: "bi-cup-hot", label: "Tea & Coffee" },
   { icon: "bi-egg", label: "Fresh Breakfast, Lunch & Dinner" },
   { icon: "bi-cup-straw", label: "Snacks & Beverages" },
-  { icon: "bi-truck", label: "Room Service" },
+  { icon: "bi-truck", label: "Room Service Available" },
   { icon: "bi-droplet", label: "Mineral Water" },
 ];
 
 const Pantry = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === pantryImages.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [pantryImages.length]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev === pantryImages.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? pantryImages.length - 1 : prev - 1));
+
   return (
     <section id="pantry" className="guest-house-section section-premium">
       <div className="container-xl">
         <div className="guest-house-shell">
-          {/* LEFT SIDE - Image Gallery (50%) */}
-          <div className="guest-house-gallery" data-aos="fade-right">
-            <div className="d-grid gap-3" style={{ height: "100%" }}>
-              {/* Large featured image - 60% height */}
-              <div 
-                className="guest-house-image-card"
-                style={{
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  height: "60%",
-                }}
-              >
-                <img 
-                  src={pantryImages[0].src} 
-                  alt={pantryImages[0].alt} 
-                  loading="lazy" 
-                  className="w-100 h-100 object-fit-cover"
-                />
-              </div>
-              
-              {/* Two images row 1 */}
-              <div className="d-flex gap-3" style={{ height: "20%" }}>
-                <div 
-                  className="guest-house-image-card flex-grow-1"
-                  style={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <img 
-                    src={pantryImages[1].src} 
-                    alt={pantryImages[1].alt} 
-                    loading="lazy" 
-                    className="w-100 h-100 object-fit-cover"
-                  />
-                </div>
-                <div 
-                  className="guest-house-image-card flex-grow-1"
-                  style={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <img 
-                    src={pantryImages[2].src} 
-                    alt={pantryImages[2].alt} 
-                    loading="lazy" 
-                    className="w-100 h-100 object-fit-cover"
-                  />
-                </div>
-              </div>
-              
-              {/* Two images row 2 */}
-              <div className="d-flex gap-3" style={{ height: "20%" }}>
-                <div 
-                  className="guest-house-image-card flex-grow-1"
-                  style={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <img 
-                    src={pantryImages[3].src} 
-                    alt={pantryImages[3].alt} 
-                    loading="lazy" 
-                    className="w-100 h-100 object-fit-cover"
-                  />
-                </div>
-                <div 
-                  className="guest-house-image-card flex-grow-1"
-                  style={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <img 
-                    src={pantryImages[4].src} 
-                    alt={pantryImages[4].alt} 
-                    loading="lazy" 
-                    className="w-100 h-100 object-fit-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT SIDE - Content (50%) */}
-          <div className="guest-house-content" data-aos="fade-left">
+          {/* LEFT SIDE - Content (45%) */}
+          <div className="guest-house-content" data-aos="fade-right">
             <div className="section-subtitle mb-2">JP RESIDENCY HOSPITALITY</div>
             <h2 className="section-title text-start guest-house-title mb-3">Pantry</h2>
             <p className="guest-house-lead mb-4">
@@ -143,6 +57,48 @@ const Pantry = () => {
               <i className="bi bi-whatsapp"></i>
               Book Now
             </a>
+          </div>
+
+          {/* RIGHT SIDE - Image Slider (55%) */}
+          <div className="guest-house-gallery" data-aos="fade-left">
+            <div className="position-relative guest-slider-wrapper">
+              {pantryImages.map((img, i) => (
+                <img
+                  key={i}
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  className={`guest-slider-image ${i === currentSlide ? "active" : ""}`}
+                />
+              ))}
+
+              {/* Previous */}
+              <button
+                onClick={prevSlide}
+                className="guest-slider-arrow guest-prev"
+              >
+                ‹
+              </button>
+
+              {/* Next */}
+              <button
+                onClick={nextSlide}
+                className="guest-slider-arrow guest-next"
+              >
+                ›
+              </button>
+
+              {/* Dots */}
+              <div className="guest-slider-dots">
+                {pantryImages.map((_, i) => (
+                  <span
+                    key={i}
+                    onClick={() => setCurrentSlide(i)}
+                    className={`guest-dot ${i === currentSlide ? "active" : ""}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

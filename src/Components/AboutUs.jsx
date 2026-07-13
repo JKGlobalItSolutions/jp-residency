@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import aboutImg1 from "../assets/about/img.png";
-import aboutImg2 from "../assets/about/img1.png";
-import aboutImg3 from "../assets/about/img4.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
+// Automatically import every image inside the about folder.
+// Adding a new image here requires no code changes — Vite picks it up on build/HMR.
+const imageModules = import.meta.glob("../assets/about/*", { eager: true });
+const aboutImages = Object.keys(imageModules)
+  .sort()
+  .map((key) => imageModules[key].default);
 
 const AboutUs = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const aboutImages = [aboutImg1, aboutImg2, aboutImg3];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,16 +32,6 @@ const AboutUs = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev === aboutImages.length - 1 ? 0 : prev + 1));
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [aboutImages.length]);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev === aboutImages.length - 1 ? 0 : prev + 1));
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? aboutImages.length - 1 : prev - 1));
 
   return (
     <section
@@ -53,7 +51,7 @@ const AboutUs = () => {
         >
           {/* Left: Content */}
           <div className="col-lg-6">
-            <div className="section-subtitle">About Us</div>
+            <div className="section-subtitle" style={{ fontSize: "3rem" }}>About Us</div>
             <h2 className="section-title text-start" style={{ fontSize: "2rem" }}>
               Your Divine Stay in Tiruvannamalai
             </h2>
@@ -91,7 +89,7 @@ const AboutUs = () => {
               className="text-muted"
               style={{
                 fontSize: "0.95rem",
-                lineHeight: "1.8",
+                lineHeight: "1.8",   
                 marginBottom: 0,
               }}
             >
@@ -102,7 +100,7 @@ const AboutUs = () => {
           {/* Right: Image Carousel */}
           <div className="col-lg-6">
             <div
-              className="position-relative"
+              className="position-relative about-swiper-wrapper"
               style={{
                 borderRadius: "20px",
                 overflow: "hidden",
@@ -110,106 +108,129 @@ const AboutUs = () => {
                 transition: "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
             >
-              <div className="position-relative" style={{ height: "400px", overflow: "hidden" }}>
+              <Swiper
+                className="about-swiper"
+                modules={[Autoplay, Navigation, Pagination, EffectFade]}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                speed={600}
+                loop={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                navigation={true}
+                pagination={{ clickable: true, el: ".about-custom-pagination" }}
+              >
                 {aboutImages.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`JP Residency ${i + 1}`}
-                    className="img-fluid w-100"
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      height: "400px",
-                      objectFit: "cover",
-                      opacity: i === currentSlide ? 1 : 0,
-                      transition: "opacity 0.8s ease-in-out",
-                    }}
-                    loading="lazy"
-                  />
-                ))}
-                <div
-                  className="position-absolute bottom-0 start-0 end-0 p-4"
-                  style={{
-                    background:
-                      "linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%)",
-                    zIndex: 5,
-                  }}
-                >
-                  <span
-                    className="badge"
-                    style={{
-                      background: "#A37D4C",
-                      padding: "8px 18px",
-                      borderRadius: "50px",
-                      fontSize: "0.85rem",
-                      fontWeight: 600,
-                    }}
-                  >
-                    <i className="bi bi-star-fill me-1"></i> Experience Comfort & Luxury
-                  </span>
-                </div>
-
-                {/* Navigation Arrows */}
-                <button
-                  onClick={prevSlide}
-                  className="btn btn-light position-absolute top-50 start-0 translate-middle-y rounded-circle shadow d-flex align-items-center justify-content-center"
-                  style={{
-                    width: "36px",
-                    height: "36px",
-                    border: "none",
-                    fontSize: "22px",
-                    zIndex: 5,
-                    marginLeft: "10px",
-                    opacity: 0.85,
-                  }}
-                  aria-label="Previous image"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="btn btn-light position-absolute top-50 end-0 translate-middle-y rounded-circle shadow d-flex align-items-center justify-content-center"
-                  style={{
-                    width: "36px",
-                    height: "36px",
-                    border: "none",
-                    fontSize: "22px",
-                    zIndex: 5,
-                    marginRight: "10px",
-                    opacity: 0.85,
-                  }}
-                  aria-label="Next image"
-                >
-                  ›
-                </button>
-
-                {/* Pagination Dots */}
-                <div
-                  className="position-absolute d-flex gap-2"
-                  style={{ bottom: "15px", left: "50%", transform: "translateX(-50%)", zIndex: 5 }}
-                >
-                  {aboutImages.map((_, i) => (
-                    <span
-                      key={i}
-                      onClick={() => setCurrentSlide(i)}
-                      style={{
-                        width: i === currentSlide ? "22px" : "8px",
-                        height: "8px",
-                        borderRadius: "4px",
-                        background: i === currentSlide ? "#A37D4C" : "rgba(255,255,255,0.6)",
-                        transition: "all 0.3s ease",
-                        cursor: "pointer",
-                      }}
+                  <SwiperSlide key={i}>
+                    <img
+                      src={img}
+                      alt={`JP Residency ${i + 1}`}
+                      loading="lazy"
+                      decoding="async"
                     />
-                  ))}
-                </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Badge overlay */}
+              <div
+                className="position-absolute bottom-0 start-0 end-0 p-4"
+                style={{
+                  background:
+                    "linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%)",
+                  zIndex: 5,
+                  pointerEvents: "none",
+                }}
+              >
+                <span
+                  className="badge"
+                  style={{
+                    background: "#A37D4C",
+                    padding: "8px 18px",
+                    borderRadius: "50px",
+                    fontSize: "0.85rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  <i className="bi bi-star-fill me-1"></i> Experience Comfort & Luxury
+                </span>
               </div>
+
+              {/* Pagination dots (rendered above the badge overlay) */}
+              <div
+                className="about-custom-pagination"
+                style={{
+                  position: "absolute",
+                  bottom: "15px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  zIndex: 6,
+                  display: "flex",
+                  gap: "8px",
+                }}
+              ></div>
             </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .about-swiper {
+          width: 100%;
+          height: 600px;
+        }
+        .about-swiper .swiper-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        /* Navigation arrows */
+        .about-swiper .swiper-button-next,
+        .about-swiper .swiper-button-prev {
+          width: 36px;
+          height: 36px;
+          background: #fff;
+          border-radius: 50%;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          opacity: 0.85;
+          transition: opacity 0.3s ease;
+        }
+        .about-swiper .swiper-button-next:hover,
+        .about-swiper .swiper-button-prev:hover {
+          opacity: 1;
+        }
+        .about-swiper .swiper-button-next::after,
+        .about-swiper .swiper-button-prev::after {
+          font-size: 20px;
+          font-weight: 700;
+          color: #333;
+        }
+        /* Pagination dots */
+        .about-custom-pagination .swiper-pagination-bullet {
+          width: 8px;
+          height: 8px;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.6);
+          opacity: 1;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        .about-custom-pagination .swiper-pagination-bullet-active {
+          width: 22px;
+          background: #A37D4C;
+        }
+        /* Responsive heights */
+        @media (max-width: 991px) {
+          .about-swiper { height: 500px; }
+        }
+        @media (max-width: 767px) {
+          .about-swiper { height: 400px; }
+        }
+      `}</style>
     </section>
   );
 };

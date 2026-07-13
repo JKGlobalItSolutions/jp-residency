@@ -4,6 +4,18 @@ import homeImg2 from "../assets/homepage/img2.png";
 import homeImg3 from "../assets/homepage/img3.png";
 import homeImg4 from "../assets/homepage/img4.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import WhyChooseUs from "../Components/WhyChooseUs";
+import AboutUs from "../Components/AboutUs";
+import Roomsslide from "../Pages/Roomsslide";
+import JPGuestHouse from "../Components/JPGuestHouse";
+import ToursTravels from "../Components/ToursTravels";
+import Pantry from "../Components/Pantry";
+import Amenities from "../Pages/Amenities";
+import Gallery from "../Pages/Gallery";
+import NearbyAttractions from "../Components/NearbyAttractions";
+import PournamiCalendar from "../Components/PournamiCalendar";
+import HowToReachUs from "../Components/HowToReachUs";
+import Contact from "../Pages/Contact";
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -130,4 +142,24 @@ const HeroSlider = () => {
   );
 };
 
-export default HeroSlider;
+const Home = () => {
+  return (
+    <>
+      <HeroSlider />
+      <WhyChooseUs />
+      <AboutUs />
+      <Roomsslide />
+      <JPGuestHouse />
+      <ToursTravels />
+      <Pantry />
+      <Amenities />
+      <Gallery />
+      <NearbyAttractions />
+      <PournamiCalendar />
+      <HowToReachUs />
+      <Contact />
+    </>
+  );
+};
+
+export default Home;

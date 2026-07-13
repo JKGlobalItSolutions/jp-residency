@@ -45,8 +45,8 @@ const Rooms = () => {
   const rooms = [
     {
       name: "Deluxe Double Room With Panchamuga Dharsham",
-      price: "₹8,000",
-      guests: "Up to 2 guests",
+      price: "₹6500",
+      guests: "Up to 4 Adult & 2 Child",
       beds: "Queen bed",
       images: [deluxeDoubleImg1, deluxeDoubleImg2, deluxeDoubleImg3],
       description:
@@ -57,9 +57,9 @@ const Rooms = () => {
     },
     {
       name: "Deluxe Triple Room",
-      price: "₹6,000",
+      price: "₹5000",
       beds: "King bed",
-      guests: "Up to 2 Adults & 2 Child",
+      guests: "Up to 3 Adults & 1 Child",
       images: [deluxeTripleImg1, deluxeTripleImg2],
       description:
         "Elegant premium room with enhanced furnishings and modern amenities. Features plush bedding and a relaxing atmosphere.",
@@ -69,8 +69,8 @@ const Rooms = () => {
     },
     {
       name: "Deluxe Room",
-      price: "₹4,000",
-      guests: "Up to 4 guests",
+      price: "₹2500",
+      guests: "Up to 2 Adult & 1 Chlid",
       beds: "2 Queen beds",
       images: [deluxeRoomImg1, deluxeRoomImg2, deluxeRoomImg3],
       description:
@@ -81,8 +81,8 @@ const Rooms = () => {
     },
     {
       name: "Suite Room With Panchamuga Dharsham",
-      price: "₹8,000",
-      guests: "Up to 2 guests",
+      price: "₹4000",
+      guests: "Up to 4 Adult & 1 Child",
       beds: "Queen bed",
       images: [spdImg1, spdImg2, spdImg3],
       description:
@@ -93,8 +93,8 @@ const Rooms = () => {
     },
     {
       name: "Suite Room With Panchamuga Dharsham 1",
-      price: "₹8,000",
-      guests: "Up to 2 guests",
+      price: "₹4000",
+      guests: "Up to 2 Adult & 1 Child",
       beds: "Queen bed",
       images: [spd1Img1, spd1Img2, spd1Img3],
       description:
