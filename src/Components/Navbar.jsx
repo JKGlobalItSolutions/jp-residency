@@ -87,7 +87,7 @@ const Navbar = () => {
         transition: "all 0.3s",
       }}
     >
-      <div className="container">
+      <div className="container-fluid">
         <Link to="/" className="navbar-brand d-flex align-items-center">
           <img
             src={LogoImage}
