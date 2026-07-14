@@ -22,6 +22,19 @@ import gallery25 from "../assets/gallery/gellary_img25.png";
 import gallery26 from "../assets/gallery/gellary_img26.png";
 import gallery27 from "../assets/gallery/gellary_img27.png";
 
+// Automatically import every image inside the guest folder.
+// Adding a new image here requires no code changes — Vite picks it up on build/HMR.
+const guestImageModules = import.meta.glob("../assets/guest/*", { eager: true });
+const guestImages = Object.keys(guestImageModules)
+  .sort()
+  .map((key) => guestImageModules[key].default);
+
+// Automatically import every image inside the party folder.
+const partyImageModules = import.meta.glob("../assets/party/*", { eager: true });
+const partyImages = Object.keys(partyImageModules)
+  .sort()
+  .map((key) => partyImageModules[key].default);
+
 export const galleryImages = [
   { src: gallery9, size: "gallery-h-xl" },
   { src: gallery10, size: "gallery-h-lg" },
@@ -42,6 +55,8 @@ export const galleryImages = [
   { src: gallery25, size: "gallery-h-md" },
   { src: gallery26, size: "gallery-h-md" },
   { src: gallery27, size: "gallery-h-md" },
+  ...guestImages.map((src) => ({ src, size: "gallery-h-md" })),
+  ...partyImages.map((src) => ({ src, size: "gallery-h-md" })),
 ];
 
 const Gallery = () => {

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import travelsImg1 from "../assets/tour/img1.png";
 import travelsImg2 from "../assets/tour/img2.png";
 import travelsImg3 from "../assets/tour/img3.png";
@@ -30,6 +32,10 @@ const amenities = [
 
 const ToursTravels = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    AOS.init({ duration: 1500, once: true, easing: "ease-in-out" });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {

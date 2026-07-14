@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import travelsImg1 from "../assets/travels/img1.png";
 import travelsImg2 from "../assets/travels/img2.png";
 import travelsImg3 from "../assets/travels/img3.png";
@@ -28,6 +30,10 @@ const amenities = [
 
 const ToursTravels = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    AOS.init({ duration: 1500, once: true, easing: "ease-in-out" });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -97,7 +103,7 @@ const ToursTravels = () => {
             <div className="guest-house-features" style={{ color: "#000000" }}>
               {amenities.map((amenity) => (
                 <div className="guest-house-feature" key={amenity.label}>
-                  <i className={`bi ${amenity.icon}`} style={{ fontSize: "26px" }}></i>
+                  <i className={`bi ${amenity.icon}`} style={{ fontSize: "26px" , color: "#000000" }}></i>
                   <span>{amenity.label}</span>
                 </div>
               ))}

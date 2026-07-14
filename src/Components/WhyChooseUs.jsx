@@ -43,7 +43,7 @@ const WhyChooseUs = () => {
     { icon: "bi-person-heart", title: "Pilgrim-Friendly Stay", desc: "Comfortable accommodation designed for devotees and spiritual travelers." },
     { icon: "bi-signpost-split-fill", title: "Prime Location Near Temple Attractions", desc: "Easy access to important spiritual and sightseeing destinations." },
     { icon: "bi-people-fill", title: "Family-Friendly Accommodation", desc: "Safe, comfortable, and convenient stay for families." },
-    { icon: "bi-taxi", title: "Tours & Travels", desc: "Explore Tiruvannamalai comfortably with our reliable Tours & Travels service. We provide safe transportation for temple visits, Girivalam, sightseeing, airport transfers, railway station pickups, and customized family trips.", link: "/tours-travels" },
+    // { icon: "bi-taxi", title: "Tours & Travels", desc: "Explore Tiruvannamalai comfortably with our reliable Tours & Travels service. We provide safe transportation for temple visits, Girivalam, sightseeing, airport transfers, railway station pickups, and customized family trips.", link: "/tours-travels" },
   ];
 
   return (

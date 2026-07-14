@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LogoImage from "../assets/gallery/JP Logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -11,6 +11,7 @@ const Navbar = () => {
   const [header, setHeader] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 992);
@@ -24,20 +25,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToSection = (id) => {
-    if (location.pathname !== "/") {
-      window.location.href = `/#${id}`;
-      return;
-    }
-
-    const section = document.getElementById(id);
-    if (section) {
-      const yOffset = -70;
-      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  };
 
   const bgColor = isMobile ? "#FBEFD3" : header ? "#FBEFD3" : "transparent";
   const navTextColor = header || isMobile ? "#000" : "#fff";
@@ -65,25 +52,35 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: "Home", id: "hero" },
-    { label: "About Us", id: "about" },
-    { label: "Rooms", id: "room" },
-  { label: "JP Guest House", id: "guest-house" },
-  { label: "Pantry", id: "pantry", route: "/pantry" },
-  { label: "Tours & Travels", id: "tours-travels", route: "/tours-travels" },
-  { label: "Amenities", id: "amenities" },
-    { label: "Gallery", id: "gallery" },
-    { label: "Contact Us", id: "contact" },
+    { label: "Home", route: "/" },
+    { label: "About Us", route: "/about" },
+    { label: "Rooms", route: "/rooms" },
+    { label: "JP Guest House", route: "/guest-house" },
+    { label: "Pantry", route: "/pantry" },
+    { label: "Tours & Travels", route: "/tours-travels" },
+    { label: "Amenities", route: "/amenities" },
+    { label: "Gallery", route: "/gallery" },
+    { label: "Contact Us", route: "/contact" },
   ];
+
+  const handleNavClick = (route) => {
+    if (location.pathname !== route) {
+      navigate(route);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <nav
-      className="navbar navbar-expand-lg fixed-top navbar-premium"
+      className="navbar navbar-expand-lg navbar-premium"
       style={{
-        backgroundColor: bgColor,
+        position: "sticky",
+        top: "0",
+        zIndex: "1030",
+        backgroundColor: "#a37d4c",
         padding: header ? "0.5rem 1rem" : "1rem 1rem",
         boxShadow: header || isMobile ? "0 2px 8px rgba(0,0,0,0.1)" : "none",
-        zIndex: 1030,
         transition: "all 0.3s",
       }}
     >
@@ -96,7 +93,7 @@ const Navbar = () => {
             alt="JP Residency Logo"
             style={{ objectFit: "contain" }}
           />
-          <span style={{ color: "#A37D4C", fontWeight: 700, fontSize: "1.2rem" }}>
+          <span style={{ color: "#efedea", fontWeight: 700, fontSize: "1.2rem" }}>
             JP RESIDENCY
           </span>
         </Link>
@@ -117,39 +114,15 @@ const Navbar = () => {
           <ul className="navbar-nav text-uppercase fw-semibold">
             {navItems.map((item) => (
               <li key={item.label} className="nav-item">
-                {item.externalUrl ? (
-                  <a
-                    href={item.externalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="nav-link"
-                    style={navItemStyle}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {item.label}
-                  </a>
-                ) : item.route ? (
-                  <Link
-                    to={item.route}
-                    className="nav-link"
-                    style={navItemStyle}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <span
-                    onClick={() => scrollToSection(item.id)}
-                    className="nav-link"
-                    style={navItemStyle}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {item.label}
-                  </span>
-                )}
+                <span
+                  onClick={() => handleNavClick(item.route)}
+                  className="nav-link"
+                  style={navItemStyle}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {item.label}
+                </span>
               </li>
             ))}
 

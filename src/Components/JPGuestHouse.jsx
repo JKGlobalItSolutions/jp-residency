@@ -18,10 +18,10 @@ const travelsImages = [
 ];
 
 const amenities = [
-  { icon: "bi-taxi", label: "Cooking Facility" },
-  { icon: "bi-temple", label: "2 Bed Room" },
-  { icon: "bi-mountain", label: "Biggest Hall For Fun" },
-  { icon: "bi-train-light", label: "Terrace With Hill " },
+  { icon: "bi-taxi-front", label: "Cooking Facility" },
+  { icon: "bi-building", label: "2 Bed Room" },
+  { icon: "bi-tree", label: "Biggest Hall For Fun" },
+  { icon: "bi-train-lightrail-front", label: "Terrace With Hill " },
   { icon: "bi-airplane", label: "Meditation Area" },
   { icon: "bi-person-hearts", label: "Mountain View" },
 ];

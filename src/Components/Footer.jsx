@@ -10,7 +10,7 @@ const Footer = () => {
   const location = useLocation();
   const [lightboxImg, setLightboxImg] = useState(null);
 
-  const footerGalleryImages = galleryImages.map((item) => item.src);
+  const footerGalleryImages = galleryImages.map((item) => item.src).slice(0, 4);
   const bookingUrl =
     "https://bookingengine.stayflexi.com/?hotel_id=39026";
 
@@ -163,7 +163,7 @@ const Footer = () => {
               </h6>
               <div className="d-flex align-items-center gap-2 mb-3" style={{ color: "#ccc", fontSize: "13px" }}>
                 <i className="bi bi-geo-alt-fill" style={{ color: "#A37D4C", fontSize: "16px", minWidth: "20px" }}></i>
-                <span>Tiruvannamalai, Tamil Nadu, India</span>
+                <span>Idukka Pillaiyar Kovil, 6th St, Vengikkal, Tiruvannamalai, Tamil Nadu 606604</span>
               </div>
               <div className="d-flex align-items-center gap-2 mb-3" style={{ color: "#ccc", fontSize: "13px" }}>
                 <i className="bi bi-telephone-fill" style={{ color: "#A37D4C", fontSize: "16px", minWidth: "20px" }}></i>
@@ -282,7 +282,7 @@ const Footer = () => {
             {new Date().getFullYear()} JP Residency. All Rights Reserved.
             <br />
             <span style={{ fontSize: "12px", color: "#777" }}>
-              Designed for a Premium Hospitality Experience
+              Designed By Sonachala
             </span>
           </div>
         </div>
