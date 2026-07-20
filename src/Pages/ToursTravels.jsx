@@ -21,7 +21,7 @@ const travelsImages = [
 
 const amenities = [
   { icon: "bi-bank", label: "Temple Visits" },
-  { icon: "bi-footprints", label: "Girivalam" },
+  { icon: "bi-person-walking", label: "Girivalam" },
   { icon: "bi-airplane", label: "Airport Transfer" },
   { icon: "bi-train-front", label: "Railway Station Pickup" },
   { icon: "bi-car-front", label: "Local Sightseeing" },
@@ -103,8 +103,8 @@ const ToursTravels = () => {
             <div className="guest-house-features" style={{ color: "#000000" }}>
               {amenities.map((amenity) => (
                 <div className="guest-house-feature" key={amenity.label}>
-                  <i className={`bi ${amenity.icon}`} style={{ fontSize: "26px" , color: "#000000" }}></i>
-                  <span>{amenity.label}</span>
+                  <i className={`bi ${amenity.icon}`} style={{ fontSize: "26px" }}></i>
+                  <span style={{ color: "#000000" }}>{amenity.label}</span>
                 </div>
               ))}
             </div>
