@@ -21,6 +21,9 @@ import gallery24 from "../assets/gallery/gellary_img24.png";
 import gallery25 from "../assets/gallery/gellary_img25.png";
 import gallery26 from "../assets/gallery/gellary_img26.png";
 import gallery27 from "../assets/gallery/gellary_img27.png";
+import shoot1 from "../assets/gallery/shoot1.png";
+import shoot2 from "../assets/gallery/shoot2.png";
+import shoot3 from "../assets/gallery/shoot3.png";
 
 // Automatically import every image inside the guest folder.
 // Adding a new image here requires no code changes — Vite picks it up on build/HMR.
@@ -55,6 +58,9 @@ export const galleryImages = [
   { src: gallery25, size: "gallery-h-md" },
   { src: gallery26, size: "gallery-h-md" },
   { src: gallery27, size: "gallery-h-md" },
+  { src: shoot1, size: "gallery-h-md" },
+  { src: shoot2, size: "gallery-h-md" },
+  { src: shoot3, size: "gallery-h-md" },
   ...guestImages.map((src) => ({ src, size: "gallery-h-md" })),
   ...partyImages.map((src) => ({ src, size: "gallery-h-md" })),
 ];
