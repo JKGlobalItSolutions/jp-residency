@@ -167,11 +167,11 @@ const Footer = () => {
               </div>
               <div className="d-flex align-items-center gap-2 mb-3" style={{ color: "#ccc", fontSize: "13px" }}>
                 <i className="bi bi-telephone-fill" style={{ color: "#A37D4C", fontSize: "16px", minWidth: "20px" }}></i>
-                <span>+91 9688866684</span>
+                <span>+91 9688866684,9442866684</span>
               </div>
               <div className="d-flex align-items-center gap-2 mb-3" style={{ color: "#ccc", fontSize: "13px" }}>
                 <i className="bi bi-whatsapp" style={{ color: "#A37D4C", fontSize: "16px", minWidth: "20px" }}></i>
-                <span>+91 9688866684</span>
+                <span>+91 9442866684 ,9688866684</span>
               </div>
               <div className="d-flex align-items-center gap-2" style={{ color: "#ccc", fontSize: "13px" }}>
                 <i className="bi bi-envelope-fill" style={{ color: "#A37D4C", fontSize: "16px", minWidth: "20px" }}></i>

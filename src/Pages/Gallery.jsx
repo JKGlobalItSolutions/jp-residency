@@ -21,6 +21,10 @@ import gallery24 from "../assets/gallery/gellary_img24.png";
 import gallery25 from "../assets/gallery/gellary_img25.png";
 import gallery26 from "../assets/gallery/gellary_img26.png";
 import gallery27 from "../assets/gallery/gellary_img27.png";
+import gallery28 from "../assets/gallery/gellary_img28.png";
+import gallery29 from "../assets/gallery/gellary_img29.png";
+import gallery30 from "../assets/gallery/gellary_img30.png";
+import gallery31 from "../assets/gallery/gellary_img31.png";
 import shoot1 from "../assets/gallery/shoot1.png";
 import shoot2 from "../assets/gallery/shoot2.png";
 import shoot3 from "../assets/gallery/shoot3.png";
@@ -58,6 +62,10 @@ export const galleryImages = [
   { src: gallery25, size: "gallery-h-md" },
   { src: gallery26, size: "gallery-h-md" },
   { src: gallery27, size: "gallery-h-md" },
+  { src: gallery28, size: "gallery-h-md" },
+  { src: gallery29, size: "gallery-h-md" },
+  { src: gallery30, size: "gallery-h-md" },
+  { src: gallery31, size: "gallery-h-md" },
   { src: shoot1, size: "gallery-h-md" },
   { src: shoot2, size: "gallery-h-md" },
   { src: shoot3, size: "gallery-h-md" },
