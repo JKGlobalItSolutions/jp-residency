@@ -42,6 +42,18 @@ const partyImages = Object.keys(partyImageModules)
   .sort()
   .map((key) => partyImageModules[key].default);
 
+// Automatically import every image inside the jpadd folder.
+const jpaddImageModules = import.meta.glob("../assets/jpadd/*", { eager: true });
+const jpaddImages = Object.keys(jpaddImageModules)
+  .sort()
+  .map((key) => jpaddImageModules[key].default);
+
+// Automatically import every image inside the jpinova folder.
+const jpinovaImageModules = import.meta.glob("../assets/jpinova/*", { eager: true });
+const jpinovaImages = Object.keys(jpinovaImageModules)
+  .sort()
+  .map((key) => jpinovaImageModules[key].default);
+
 export const galleryImages = [
   { src: gallery9, size: "gallery-h-xl" },
   { src: gallery10, size: "gallery-h-lg" },
@@ -71,6 +83,8 @@ export const galleryImages = [
   { src: shoot3, size: "gallery-h-md" },
   ...guestImages.map((src) => ({ src, size: "gallery-h-md" })),
   ...partyImages.map((src) => ({ src, size: "gallery-h-md" })),
+  ...jpaddImages.map((src) => ({ src, size: "gallery-h-md" })),
+  ...jpinovaImages.map((src) => ({ src, size: "gallery-h-md" })),
 ];
 
 const Gallery = () => {
